@@ -20,8 +20,8 @@ public class DisplayImpl implements IDisplay {
         while (num != -1) {
             if (!errorPresent)
                 printQuestions(currentStory);
-            if (currentStory.getQuestions() == null)
-                break;
+            if (currentStory.getQuestions() == null || currentStory.getQuestions().isEmpty())
+               break;
             num = in.nextInt();
             if (num != -1) {
                 try {

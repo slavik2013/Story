@@ -7,6 +7,7 @@ import java.util.Map;
  */
 public class Story {
 
+    private int id;
     private String storyPart;
     private Map<Integer, Question> questions;
     private IDisplay display;
@@ -15,6 +16,11 @@ public class Story {
     }
 
     public class Builder {
+        public Builder id(int id) {
+            Story.this.setId(id);
+            return this;
+        }
+
         public Builder storyPart(String storyPart) {
             Story.this.setStoryPart(storyPart);
             return this;
@@ -64,70 +70,6 @@ public class Story {
         questions.put(number, question);
     }
 
-    /*
-        find question in story hierarchy by id and add story to this question
-        For example if we have hierarchy like below
-
-        Story part 1:
-            1) Question 1 (id = 1)
-                Story part 2:
-                    1) Question 1 (id = 3)
-                    2) Question 2 (id = 4)
-
-            2) Question 2 (id = 2)
-                Story part 3:
-                    1) Question 1 (id = 5)
-                    2) Question 2 (id = 6)
-
-        and we have new story part like
-
-        Story part 4:
-            1) Question 1 (id = 7)
-            2) Question 2 (id = 8)
-
-        which we need to add to question with id 3 if it is chosen
-
-        then after calling addStoryByQuestionId(3, Story part 4) the hierarchy will be
-
-        Story part 1:
-            1) Question 1 (id = 1)
-                Story part 2:
-                    1) Question 1 (id = 3)
-                            Story part 4:
-                                1) Question 1 (id = 7)
-                                2) Question 2 (id = 8)
-                    2) Question 2 (id = 4)
-
-            2) Question 2 (id = 2)
-                Story part 3:
-                    1) Question 1 (id = 5)
-                    2) Question 2 (id = 6)
-    */
-    public void addStoryByQuestionId(int id, Story story) {
-        Question question = findQuestionById(id, this);
-        question.setStory(story);
-    }
-
-    private Question findQuestionById(int id, Story story) {
-        Map<Integer, Question> questions = null;
-        if (story != null)
-            questions = story.getQuestions();
-        Question question = null;
-        if (questions != null) {
-            for (Map.Entry<Integer, Question> questionEntry : questions.entrySet()) {
-                if (questionEntry.getValue().getId() == id) {
-                    question = questionEntry.getValue();
-                    break;
-                } else {
-                    question = findQuestionById(id, questionEntry.getValue().getStory());
-                    if (question != null && question.getId() == id)
-                        break;
-                }
-            }
-        }
-        return question;
-    }
-
     public IDisplay getDisplay() {
         return display;
     }
@@ -150,6 +92,14 @@ public class Story {
 
     public void setQuestions(Map<Integer, Question> questionStory) {
         this.questions = questionStory;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

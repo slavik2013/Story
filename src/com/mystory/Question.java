@@ -6,6 +6,7 @@ package com.mystory;
 public class Question {
 
     int id;
+    int orderInList;
     private String question;
     private Story story;
 
@@ -18,6 +19,12 @@ public class Question {
 
     public Question(int id, String question) {
         this.id = id;
+        this.question = question;
+    }
+
+    public Question(int id, int orderInList, String question) {
+        this.id = id;
+        this.orderInList = orderInList;
         this.question = question;
     }
 
@@ -43,6 +50,14 @@ public class Question {
 
     public void setStory(Story story) {
         this.story = story;
+    }
+
+    public int getOrderInList() {
+        return orderInList;
+    }
+
+    public void setOrderInList(int orderInList) {
+        this.orderInList = orderInList;
     }
 
     @Override
