@@ -25,8 +25,6 @@ public class ChooseAdventureMenu implements MenuState{
         } else {
             try {
                 StoryComposer storyComposer = new StoryComposer();
-                IDisplay display = new DisplayImpl();
-                storyComposer.setDisplay(display);
                 storyComposer.loadStory(storyName.replaceAll("\\s+", ""));
                 storyComposer.getStory().displayStory(new DisplayImpl());
             } catch (IOException e) {
@@ -43,8 +41,6 @@ public class ChooseAdventureMenu implements MenuState{
 
     public static Story generateStory(){
         StoryComposer storyComposer = new StoryComposer();
-        IDisplay display = new DisplayImpl();
-        storyComposer.setDisplay(display);
 
         storyComposer.addStoryPart(0, 1, "You spend your summer holidays in Karpaty mountains in Ukraine and there are many places you want to visit. \n You:");
         storyComposer.addQuestion(1, new Question(1, 1, "Visit the highest mountain Hoverla"));

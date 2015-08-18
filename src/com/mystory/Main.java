@@ -5,12 +5,9 @@ package com.mystory;
  */
 public class Main {
     public static void main(String[] args) {
-
         Menu menu = new Menu();
         menu.setMenuState(new MainMenu());
         menu.display();
-
     }
-
 }
 

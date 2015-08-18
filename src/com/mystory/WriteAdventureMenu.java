@@ -12,8 +12,6 @@ public class WriteAdventureMenu implements MenuState{
         System.out.println("type 0 to finish");
 
         StoryComposer storyComposer = new StoryComposer();
-        IDisplay display = new DisplayImpl();
-        storyComposer.setDisplay(display);
 
         Scanner in = new Scanner(System.in);
         Scanner in2 = new Scanner(System.in);

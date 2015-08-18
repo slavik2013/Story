@@ -11,7 +11,6 @@ import java.util.List;
 public class StoryComposer {
 
     private Story story;
-    private IDisplay display;
 
     private List<Story> stories = new ArrayList<Story>();
     private List<Question> questions = new ArrayList<Question>();
@@ -48,14 +47,6 @@ public class StoryComposer {
 
     public Story getStory() {
         return story;
-    }
-
-    public IDisplay getDisplay() {
-        return display;
-    }
-
-    public void setDisplay(IDisplay display) {
-        this.display = display;
     }
 
     public void saveStory(String storyName){
