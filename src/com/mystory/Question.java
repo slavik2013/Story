@@ -1,9 +1,11 @@
 package com.mystory;
 
+import java.io.Serializable;
+
 /**
  * Created by slavik on 18.08.15.
  */
-public class Question {
+public class Question implements Serializable{
 
     int id;
     int orderInList;

@@ -1,16 +1,16 @@
 package com.mystory;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * Created by slavik on 18.08.15.
  */
-public class Story {
+public class Story implements Serializable{
 
     private int id;
     private String storyPart;
     private Map<Integer, Question> questions;
-    private IDisplay display;
 
     public Story() {
     }
@@ -31,11 +31,6 @@ public class Story {
             return this;
         }
 
-        public Builder display(IDisplay display) {
-            Story.this.setDisplay(display);
-            return this;
-        }
-
         public Story build() {
             return Story.this;
         }
@@ -49,7 +44,7 @@ public class Story {
         return questions.get(number);
     }
 
-    public void displayStory() {
+    public void displayStory(IDisplay display) {
         display.displayStory(this);
     }
 
@@ -68,14 +63,6 @@ public class Story {
      */
     public void addQuestion(int number, Question question) {
         questions.put(number, question);
-    }
-
-    public IDisplay getDisplay() {
-        return display;
-    }
-
-    public void setDisplay(IDisplay display) {
-        this.display = display;
     }
 
     public String getStoryPart() {

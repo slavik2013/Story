@@ -1,5 +1,9 @@
 package com.mystory;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,7 +24,6 @@ public class StoryComposer {
                 .id(storyId)
                 .storyPart(storyPart)
                 .questions(new LinkedHashMap<Integer, Question>())
-                .display(display)
                 .build();
 
         if (story != null){
@@ -34,32 +37,6 @@ public class StoryComposer {
             story = nextStory;
         }
         stories.add(nextStory);
-    }
-
-    public void addStoryPart(int questionId, Story storyPart){
-        if (story != null){
-            for (Question question : questions){
-                if (question.getId() == questionId){
-                    question.setStory(storyPart);
-                    break;
-                }
-            }
-        } else {
-            story = storyPart;
-        }
-        stories.add(storyPart);
-    }
-
-
-    public void addQuestion(int storyId, int questionId, int questionOrder, String guestion){
-        Question question = new Question(questionId, guestion);
-        questions.add(question);
-        for (Story story : stories){
-            if (story.getId() == storyId){
-                story.addQuestion(questionOrder, question);
-                break;
-            }
-        }
     }
 
     public void addQuestion(int storyId, Question question){
@@ -82,5 +59,31 @@ public class StoryComposer {
 
     public void setDisplay(IDisplay display) {
         this.display = display;
+    }
+
+    public void saveStory(String storyName){
+        try {
+            FileOutputStream fileOut = new FileOutputStream(storyName);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(story);
+            out.close();
+            fileOut.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void loadStory(String storyName){
+        FileOutputStream fileOut = null;
+        ObjectOutputStream out = null;
+        try {
+            FileInputStream fileIn = new FileInputStream(storyName);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            story = (Story) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

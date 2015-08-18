@@ -32,10 +32,10 @@ public class Test {
         storyComposer.addQuestion(3, new Question(5, 1, "Go to the museums"));
         storyComposer.addQuestion(3, new Question(6, 2, "Walk on the streets in the city"));
 
-        storyComposer.addStoryPart(3, 3, "You take a taxi, climb a mountain, take a photos, walk near mountain, have a rest and you are happy but feel that a taxi is expensive and you wanted to spend less money");
-        storyComposer.addStoryPart(4, 4, "Yoy rent a bicycle, climb to the middle of the mountain, take a photos, walk near mountain, have a rest and you are happy but feel tired");
-        storyComposer.addStoryPart(5, 5, "You see different museums and learn something about history and culture on your country");
-        storyComposer.addStoryPart(6, 6, "You see different old buildings, roads, modern shops, eat a tasty food");
+        storyComposer.addStoryPart(3, 4, "You take a taxi, climb a mountain, take a photos, walk near mountain, have a rest and you are happy but feel that a taxi is expensive and you wanted to spend less money");
+        storyComposer.addStoryPart(4, 5, "Yoy rent a bicycle, climb to the middle of the mountain, take a photos, walk near mountain, have a rest and you are happy but feel tired");
+        storyComposer.addStoryPart(5, 6, "You see different museums and learn something about history and culture on your country");
+        storyComposer.addStoryPart(6, 7, "You see different old buildings, roads, modern shops, eat a tasty food");
 
 
         story = storyComposer.getStory();
