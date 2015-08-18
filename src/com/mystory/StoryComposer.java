@@ -1,9 +1,6 @@
 package com.mystory;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -73,17 +70,15 @@ public class StoryComposer {
         }
     }
 
-    public void loadStory(String storyName){
+    public void loadStory(String storyName) throws IOException, ClassNotFoundException {
         FileOutputStream fileOut = null;
         ObjectOutputStream out = null;
-        try {
+
             FileInputStream fileIn = new FileInputStream(storyName);
             ObjectInputStream in = new ObjectInputStream(fileIn);
             story = (Story) in.readObject();
             in.close();
             fileIn.close();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 }
