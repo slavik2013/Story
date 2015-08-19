@@ -1,11 +1,14 @@
-package com.mystory;
+package com.mystory.menu;
+
+import com.mystory.Question;
+import com.mystory.StoryComposer;
 
 import java.util.Scanner;
 
 /**
  * Created by slavik on 18.08.15.
  */
-public class WriteAdventureMenu implements MenuState{
+public class WriteAdventureMenuState implements MenuState{
 
     @Override
     public void display(Menu menu) {
@@ -52,7 +55,7 @@ public class WriteAdventureMenu implements MenuState{
         }
 
         if (storyComposer.getStory() == null){
-            menu.setMenuState(new MainMenu());
+            menu.setMenuState(new MainMenuState());
             menu.display();
         }
 
@@ -63,7 +66,7 @@ public class WriteAdventureMenu implements MenuState{
         int menuItem = in.nextInt();
 
         if (menuItem == 1){
-            menu.setMenuState(new MainMenu());
+            menu.setMenuState(new MainMenuState());
             menu.display();
         } else if (menuItem == 2){
             System.out.println("type your story name");
@@ -71,7 +74,7 @@ public class WriteAdventureMenu implements MenuState{
             storyName = storyName.replaceAll("\\s+","");
             storyComposer.saveStory(storyName);
 
-            menu.setMenuState(new MainMenu());
+            menu.setMenuState(new MainMenuState());
             menu.display();
         } else if (menuItem == 3){
             System.exit(0);

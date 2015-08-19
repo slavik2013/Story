@@ -1,11 +1,11 @@
-package com.mystory;
+package com.mystory.menu;
 
 import java.util.Scanner;
 
 /**
  * Created by slavik on 18.08.15.
  */
-public class MainMenu implements MenuState {
+public class MainMenuState implements MenuState {
     @Override
     public void display(Menu menu) {
         System.out.println("type -1 to exit");
@@ -16,10 +16,10 @@ public class MainMenu implements MenuState {
         int menuItem = in.nextInt();
 
         if (menuItem == 1){
-            menu.setMenuState(new ChooseAdventureMenu());
+            menu.setMenuState(new ChooseAdventureMenuState());
             menu.display();
         } else if (menuItem == 2) {
-            menu.setMenuState(new WriteAdventureMenu());
+            menu.setMenuState(new WriteAdventureMenuState());
             menu.display();
         } else if (menuItem == -1) {
             System.exit(0);

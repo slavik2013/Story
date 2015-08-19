@@ -1,4 +1,4 @@
-package com.mystory;
+package com.mystory.menu;
 
 /**
  * Created by slavik on 18.08.15.

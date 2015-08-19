@@ -92,9 +92,9 @@ public class Story implements Serializable{
     @Override
     public String toString() {
         return "Story{" +
-                "storyPart='" + storyPart + '\'' +
-                ", questionStory=" + questions +
+                "id=" + id +
+                ", storyPart='" + storyPart + '\'' +
+                ", questions=" + questions +
                 '}';
     }
-
 }

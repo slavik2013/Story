@@ -1,4 +1,9 @@
-package com.mystory;
+package com.mystory.menu;
+
+import com.mystory.DisplayImpl;
+import com.mystory.Question;
+import com.mystory.Story;
+import com.mystory.StoryComposer;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -6,7 +11,7 @@ import java.util.Scanner;
 /**
  * Created by slavik on 18.08.15.
  */
-public class ChooseAdventureMenu implements MenuState{
+public class ChooseAdventureMenuState implements MenuState{
 
     @Override
     public void display(Menu menu) {
@@ -15,12 +20,12 @@ public class ChooseAdventureMenu implements MenuState{
         System.out.println("type story name (type default for default story)");
         String storyName = inString.nextLine();
         if ("-1".equals(storyName)){
-            menu.setMenuState(new MainMenu());
+            menu.setMenuState(new MainMenuState());
             menu.display();
         } else if ("default".equals(storyName)) {
             Story story = generateStory();
             story.displayStory(new DisplayImpl());
-            menu.setMenuState(new MainMenu());
+            menu.setMenuState(new MainMenuState());
             menu.display();
         } else {
             try {
@@ -33,7 +38,7 @@ public class ChooseAdventureMenu implements MenuState{
             } catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
-            menu.setMenuState(new MainMenu());
+            menu.setMenuState(new MainMenuState());
             menu.display();
         }
 
